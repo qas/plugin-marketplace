@@ -858,7 +858,7 @@
           },
           {
             "name": "saleslumen-campaigns",
-            "description": "Manage Saleslumen Campaigns: people, sequences, steps, variables, metrics, and tasks via MCP tools. Use when the user a…"
+            "description": "Manage Saleslumen Campaigns: people, sequences, deliveries, suppressions, schedules, variables, and sender membership v…"
           },
           {
             "name": "saleslumen-emails",

@@ -26,10 +26,11 @@ No API keys are stored in this plugin. Tokens are issued by Saleslumen OAuth and
 | --- | --- |
 | `https://mcp.saleslumenapis.com/` | MCP Streamable HTTP transport and protected-resource metadata |
 | `https://oauth.saleslumenapis.com` | OAuth authorization server (discovery, authorize, token, DCR) |
+| `https://oauth.saleslumen.com` | Login and organization consent |
 | `https://app.saleslumen.com` | User sign-in / session for the OAuth login bridge |
 | `https://www.saleslumen.com` | Product homepage and docs links in skills |
 
-Backend product APIs (`*.saleslumenapis.com`) are called by the MCP server after token exchange — not directly by this plugin.
+This plugin talks only to the MCP server. Product APIs stay behind that server.
 
 ## Credentials / permissions
 
