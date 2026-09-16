@@ -2,7 +2,7 @@
 name: saleslumen
 description: >-
   Overview of Saleslumen MCP for Grok: OAuth linking, whoami, organizations,
-  and which tools cover Campaigns, Emails, Workflows, and Apps Script.
+  namespaces, and which tools cover Campaigns, Emails, Workflows, and Apps Script.
   Use when the user mentions Saleslumen, saleslumen MCP, or asks to connect
   Grok to Saleslumen.
 ---
@@ -14,8 +14,9 @@ Saleslumen products exposed through MCP: **Workflows**, **Emails**, **Campaigns*
 ## Before any tool call
 
 1. Ensure the Saleslumen MCP server is linked (OAuth). If tools return unauthorized, re-link.
-2. Call `whoami` to confirm the authenticated user (`sub`), organization (`sl_organization_id`), audience, and scopes.
-3. Call `list_my_organizations` when the user needs to see orgs they can access. Changing the org selected at OAuth requires reconnecting.
+2. Call `whoami` for token identity and the OAuth-pinned organization ID (`sub`, `sl_organization_id`, audience, scope). It does not return an organization name.
+3. Call `list_my_organizations` for named active memberships `[{id, name}]`. Name the current organization by matching `whoami.sl_organization_id` against that list. Reconnect to switch the OAuth organization.
+4. Call `list_my_namespaces` for namespaces in the OAuth organization as `[{id, name}]`. Product tools take optional `namespace_id` (UUID or `namespaces/{uuid}`). Omit it for organization scope. Do not pass a namespace name. A token with `sl_namespace_id` is `401`; reconnect for an organization-only token.
 
 Prefer confirming identity with `whoami` before destructive actions (delete, send, publish, activate, cancel).
 
@@ -23,7 +24,7 @@ Prefer confirming identity with `whoami` before destructive actions (delete, sen
 
 | Product | Tool prefix | Use for |
 | --- | --- | --- |
-| Identity | `whoami`, `list_my_organizations` | Auth check, org membership |
+| Identity | `whoami`, `list_my_organizations`, `list_my_namespaces` | Auth pin, named memberships, namespace pick |
 | Campaigns | `campaigns_*` | Campaigns, people, sequences, deliveries, suppressions, schedules |
 | Emails | `emails_*` | Messages, threads, labels, drafts, accounts, discover |
 | Workflows | `workflows_*` | Drafts, publish, activate, executions. Publish does not activate. A `version_id` start is preview. |
@@ -47,7 +48,7 @@ MCP does not connect mailboxes, verify address lists, install Marketplace apps, 
 
 - Confirm before send, delete, trash, publish, activate, or cancel.
 - Prefer list/get tools to gather IDs before mutating.
-- Stay inside the authenticated organization; do not invent org or resource IDs.
+- Stay inside the authenticated organization; do not invent org, namespace, or resource IDs.
 
 ## Links
 

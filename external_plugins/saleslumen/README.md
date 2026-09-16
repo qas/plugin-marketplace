@@ -16,7 +16,7 @@ Saleslumen MCP uses OAuth 2.1 (authorization code + PKCE) with dynamic client re
 1. Complete the OAuth link when Grok prompts you.
 2. Sign in with your Saleslumen browser session (`app.saleslumen.com`).
 3. Pick the organization if you belong to more than one.
-4. Call `whoami` to confirm `sub`, `sl_organization_id`, and scopes.
+4. Call `whoami` to confirm `sub`, the OAuth-pinned `sl_organization_id`, and scopes. Name that organization by matching the id against `list_my_organizations`. Use `list_my_namespaces` and optional `namespace_id` to scope product calls. Reconnect to switch organization.
 
 No API keys are stored in this plugin. Tokens are issued by Saleslumen OAuth and attached by the MCP client.
 

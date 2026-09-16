@@ -51,4 +51,6 @@ Activate still requires a ready campaign. MCP cannot connect a sending mailbox o
 ## Conventions
 
 - Always use IDs returned by list/get tools; do not guess UUIDs.
+- Product tools take optional `namespace_id` from `list_my_namespaces`. Omit for organization scope. Do not pass a name.
+- `campaigns_create` and `campaigns_create_schedule` still need body `namespace` as `namespaces/{uuid}` when the create is namespaced. MCP does not copy that field from `namespace_id`.
 - For mailbox send/draft work, use the **Emails** skill (`saleslumen-emails`).

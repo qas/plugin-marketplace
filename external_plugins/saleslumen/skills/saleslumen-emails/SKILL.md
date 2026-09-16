@@ -44,3 +44,4 @@ Sending or drafting requires an email account already connected in Saleslumen. M
 - Always confirm before send, trash, or permanent delete.
 - Prefer draft + user review for first sends in a session.
 - Do not invent account IDs; list accounts first.
+- Product tools take optional `namespace_id` from `list_my_namespaces`. Omit for organization scope. Do not pass a name.

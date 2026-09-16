@@ -854,7 +854,7 @@
         "skills": [
           {
             "name": "saleslumen",
-            "description": "Overview of Saleslumen MCP for Grok: OAuth linking, whoami, organizations, and which tools cover Campaigns, Emails, Wor…"
+            "description": "Overview of Saleslumen MCP for Grok: OAuth linking, whoami, organizations, namespaces, and which tools cover Campaigns, Emails, Wor…"
           },
           {
             "name": "saleslumen-campaigns",
